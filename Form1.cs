@@ -15,6 +15,8 @@ namespace Music_Player
         public Form1()
         {
             InitializeComponent();
+            trackbar.Value = 50;
+            label4.Text = "50%";
         }
 
         string[] paths, files;
@@ -71,6 +73,17 @@ namespace Music_Player
             {
 
             }
+        }
+
+        private void trackBar_Scroll(object sender, EventArgs e)
+        {
+            player.settings.volume = trackbar.Value;
+            label4.Text = trackbar.Value.ToString() + "%";
+        }
+
+        private void p_bar_MouseDown(object sender, MouseEventArgs e)
+        {
+            player.Ctlcontrols.currentPosition = player.currentMedia.duration * e.X / p_bar.Width;
         }
 
         private void guna2CircleButton5_Click(object sender, EventArgs e)
